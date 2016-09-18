@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <% include includes/head %>
+  <body class="login">
+    <% include includes/messages %>
+    <header>
+      <a href="/" class="track-btn"><img src="/images/bs-logo.png">Buy more some breads</a>
+    </header>
+    <div class="store-profile">
+      <img src="/images/bs-logo.png" width="48" height="48">
+      <h1>Log in</h1>
+      <h3>Welcome back fatty</h3>
+    </div>
+    <div class="container">
+      <form action="/login" class="login-form" method="post" enctype="multipart/form-data" autocomplete="off" onsubmit="document.getElementById('login-btn').disabled = true; document.getElementById('login-btn').innerHTML='Proses...'"; novalidate>
+        <input type="email" name="email" placeholder="example@domain.com" value="mail.breadstock@gmail.com" required autofocus>
+        <input type="password" name="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" required value="123">
+        <button id="login-btn" class="login-btn btn" value="Log in">Log in</button>
+      </form>
+    </div>
+    <% include includes/footer %>
+  </body>
+</html>

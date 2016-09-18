@@ -1,0 +1,25 @@
+node_modules/
+
+# JAVASCRIPTS
+public/javascripts/dashboard/app
+public/javascripts/dashboard/plugins
+!public/javascripts/dashboard/*min.js
+
+public/javascripts/index/app
+public/javascripts/index/plugins
+!public/javascripts/index/*min.js
+
+
+# STYLESHEETS
+public/stylesheets/dashboard/app
+public/stylesheets/dashboard/plugins
+public/stylesheets/dashboard/*.styl
+!public/stylesheets/dashboard/*min.css
+
+public/stylesheets/index/app
+public/stylesheets/index/plugins
+public/stylesheets/index/*.styl
+!public/stylesheets/index/*min.css
+
+id_rsa
+id_rsa.pub

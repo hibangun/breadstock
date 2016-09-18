@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    <%- addStylesheets(css) %>
+  </head>
+  <% if(errors !== null && errors.length) { %>
+    <body class="error">
+      <h1><%= errors %></h1>
+    </body>
+  <% } %>
+
+  <% if(warning !== null && warning.length) { %>
+    <body class="warning">
+      <h1><%= warning %></h1>
+    </body>
+  <% } %>
+
+  <% if(info !== null && info.length) { %>
+    <body class="info">
+      <h1><%= info %></h1>
+    </body>
+  <% } %>
+
+  <% if(success !== null && success.length) { %>
+    <body class="success">
+      <h1><%= success %></h1>
+    </body>
+  <% } %>
+</html>
