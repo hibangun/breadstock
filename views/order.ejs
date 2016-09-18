@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <% include includes/head %>
+  <body class="order">
+    <% include includes/messages %>
+    <header>
+      <a href="/" class="track-btn"><img src="/images/bs-logo.png">Buy more some breads</a>
+    </header>
+    <div class="store-profile">
+      <img src="/images/bs-logo-search.png" width="48" height="48">
+      <h1>Search your order</h1>
+      <input type="text" name="orderId" class="order-input" value="<%= orderId %>">
+      <h3></h3>
+    </div>
+    <div class="container details"></div>
+    <% include includes/footer %>
+  </body>
+</html>

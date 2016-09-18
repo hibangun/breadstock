@@ -1,0 +1,39 @@
+<% if(!_.isEmpty(errors) && errors.length) { %>
+  <div class="error-msg">
+    <p><%= errors %></p>
+  </div>
+<% } %>
+
+<% if(!_.isEmpty(warning) && warning.length) { %>
+  <div class="warning-msg">
+    <p><%= warning %></p>
+  </div>
+<% } %>
+
+<% if(!_.isEmpty(info) && info.length) { %>
+  <div class="info-msg">
+    <p><%= info %></p>
+  </div>
+<% } %>
+
+<% if(!_.isEmpty(success) && success.length) { %>
+  <div class="success-msg">
+    <p><%= success %></p>
+  </div>
+<% } %>
+
+<div class="error-msg-ajax ajax-messages">
+  <p></p>
+</div>
+
+<div class="warning-msg-ajax ajax-messages">
+  <p></p>
+</div>
+
+<div class="info-msg-ajax ajax-messages">
+  <p></p>
+</div>
+
+<div class="success-msg-ajax ajax-messages">
+  <p></p>
+</div>
