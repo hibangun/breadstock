@@ -6,11 +6,11 @@ var bcrypt    = require('bcrypt-nodejs')
 var orderItemSchema = new Schema({
   order: {
     type: Schema.ObjectId,
-    ref : "order",
+    ref : "Order",
   },
   product: {
     type: Schema.ObjectId,
-    ref : "product",
+    ref : "Product",
   },
   count: {
     type: Number
@@ -63,9 +63,9 @@ exports.findByQueries = function(queries, cb) {
   })
 }
 
-// find one order by queries
+// find one order item by queries
 exports.findAllByQueries = function(queries, cb) {
-  Order
+  OrderItem
   .find(queries)
   .populate('order')
   .populate('product')

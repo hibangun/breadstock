@@ -31,6 +31,9 @@ var orderSchema = new Schema({
   shippingCode: {
     type: String
   },
+  totalItem: {
+    type: Number
+  },
   create: {
     type: Date
   },

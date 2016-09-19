@@ -5,6 +5,7 @@
     <% include includes/messages %>
     <header>
       <a href="/order" class="track-btn"><img src="/images/track-logo.png">Track your order</a>
+      <a href="/login" class="login-btn">Log in</a>
     </header>
     <div class="store-profile">
       <img src="/images/bs-logo.png" width="48" height="48">
@@ -18,14 +19,14 @@
       <form action="/api/order/add" class="shipping-form" method="post" enctype="multipart/form-data" autocomplete="off" onsubmit="document.getElementById('submit-btn').disabled = true; document.getElementById('submit-btn').innerHTML='Submitting...'"; novalidate>
         <h3>Shipping details</h3>
         <label for="">Name</label>
-        <input type="text" name="name" value="name" required>
+        <input type="text" name="name" required>
         <label for="phone">Phone</label>
-        <input type="text" name="phone" value="phone" required>
+        <input type="text" name="phone" required>
         <label for="email">Email</label>
-        <input type="email" name="email" value="key_way_dee@yahoo.com" required>
+        <input type="email" name="email" required>
         <label for="address">Address</label>
-        <textarea name="address" id="" cols="30" rows="10" required>Address</textarea>
-        <input type="hidden" name="coupon" value="57de2888f196ef1437fe6e20">
+        <textarea name="address" rows="10" required></textarea>
+        <input type="hidden" name="coupon" value="">
         <button id="submit-btn" class="submit-btn btn" value="Submit order">Submit order</button>
       </form>
       <div class="product-ordered">

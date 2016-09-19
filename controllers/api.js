@@ -56,6 +56,37 @@ app.route('/coupon/check/:code')
   })
 })
 
+app.route('/orders')
+.get(function(req, res, next) {
+  Order.findAllByQueries({}, function(err, docs) {
+    if(err) {
+      return resHelper.responseServerError(res, {message: 'There was problem with the system. Try again.'})
+    } else {
+      return resHelper.responseSuccess(res, docs)
+    }
+  })
+})
+
+app.route('/orders/:orderId')
+.get(function(req, res, next) {
+  var orderId = req.params.orderId
+
+  async.parallel({
+    order: function(cb) {
+      Order.findByQueries({'_id': orderId}, cb)
+    },
+    orderItem: function(cb) {
+      OrderItem.findAllByQueries({'order': orderId}, cb)
+    }
+  }, function(err, results) {
+    if(err) {
+      return resHelper.responseServerError(res, {message: 'There was problem with the system. Try again.'})
+    } else {
+      return resHelper.responseSuccess(res, results || {})
+    }
+  })
+})
+
 app.route('/order/add')
 .post(function(req, res, next) {
   var data = req.body
@@ -68,6 +99,8 @@ app.route('/order/add')
         Coupon.updateByQueries({'_id': data.coupon}, {'amount': amoutLeft}, function(err, result){})
       }
     })
+  } else {
+    delete data.coupon
   }
 
   async.waterfall([
@@ -109,6 +142,20 @@ app.route('/order/check/:orderId')
 
   Order.findByQueries({'orderId': orderId}, function(err, doc) {
     console.log(err, doc);
+    if(err) {
+      return resHelper.responseServerError(res, {message: 'There was problem with the system. Try again.'})
+    } else {
+      return resHelper.responseSuccess(res, doc || {})
+    }
+  })
+})
+
+app.route('/order/shipping')
+.post(function(req, res, next) {
+  var oid = req.body.oid
+
+  console.log(req.body);
+  Order.updateByQueries({'_id': oid}, {'shippingCode': req.body.shippingCode, 'status': 2}, function(err, doc) {
     if(err) {
       return resHelper.responseServerError(res, {message: 'There was problem with the system. Try again.'})
     } else {

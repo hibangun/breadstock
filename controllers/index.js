@@ -47,9 +47,16 @@ app.route('/login')
     css: ['index/app.css']
   })
 })
-.post(passport.authenticate('local', { successRedirect: '/',
+.post(passport.authenticate('local', { successRedirect: '/dashboard',
                                    failureRedirect: '/login',
                                    failureFlash: true })
 );
+
+app.route('/logout')
+.get(function(req, res) {
+  req.logOut()
+  req.session.destroy()
+  res.redirect('/')
+});
 
 module.exports = app;

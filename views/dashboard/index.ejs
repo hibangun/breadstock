@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <% include ../includes/head %>
+  <body class="dashboard-index">
+    <% include ../includes/messages %>
+    <header>
+      <a href="/logout" class="track-btn">Log out</a>
+    </header>
+    <div class="store-profile">
+      <img src="/images/bs-logo.png" width="48" height="48">
+      <h1>Breadstock</h1>
+      <h3>The fattest bread, promise!</h3>
+    </div>
+    <div class="container orderlist">
+      <div class="orderlist-header">
+        <p><span class="total-list"></span> orders</p>
+        <div class="status-btn-container">
+          <a href="#" data-status="" class="all">All</a>
+          <a href="#" data-status="1" class="pending active">Pending</a>
+          <a href="#" data-status="2" class="success">Success</a>
+        </div>
+      </div>
+      <div class="orderlist-order"></div>
+    </div>
+    <div class="container shipping none">
+      <h2>ORDER #<span class="orderid txt-uc">-</span></h2>
+      <a href="#" class="back-btn btn">Close</a>
+      <form action="/api/order/shipping" class="shipping-form" method="post" enctype="multipart/form-data" autocomplete="off" onsubmit="document.getElementById('submit-btn').disabled = true; document.getElementById('submit-btn').innerHTML='Submitting...'"; novalidate>
+        <h3>Shipping details</h3>
+        <label for="">Name</label>
+        <p class="shipping-name">-</p>
+        <label for="phone">Phone</label>
+        <p class="shipping-phone">-</p>
+        <label for="email">Email</label>
+        <p class="shipping-email">-</p>
+        <label for="address">Address</label>
+        <p class="shipping-address">-</p>
+        <label for="shippingCode">Shipping code</label>
+        <input type="text" name="shippingCode" class="shipping-code txt-uc" value="">
+        <input type="hidden" name="oid" class="shipping-oid" value="">
+        <button id="submit-btn" class="submit-btn btn" value="Submit">Submit</button>
+      </form>
+      <div class="product-ordered">
+        <h3>Your order</h3>
+        <table class="product-ordered--list">
+          <tbody></tbody>
+        </table>
+        <div class="product-ordered--summary">
+          <table>
+            <tr>
+              <td>Subtotal</td>
+              <td><p class="product-ordered--total">Rp <span class="product-ordered--total-subtotal">0</span></p></td>
+            </tr>
+            <tr>
+              <td>Shipping</td>
+              <td><p class="product-ordered--total">Rp <span class="product-ordered--total-shipping">0</span></p></td>
+            </tr>
+            <tr>
+              <td>Coupon discount <span class="product-ordered--total-percentage"></span></td>
+              <td><p class="product-ordered--total coupon">- Rp <span class="product-ordered--total-coupon">0</span></p></td>
+            </tr>
+            <tr>
+              <td class="total">Total</td>
+              <td><p class="product-ordered--total">Rp <span class="product-ordered--total-final">0</span></p></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <% include ../includes/footer %>
+  </body>
+</html>

@@ -1,4 +1,5 @@
 .editorconfig
 .gitignore
 node_modules
+README.md
 public/*

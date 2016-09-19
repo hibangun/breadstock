@@ -14,13 +14,14 @@ var moment          = require('moment')
 var _               = require('lodash')
 
 var index          = require('./controllers/index')
-// var dashboard      = require('./controllers/dashboard')
+var dashboard      = require('./controllers/dashboard')
 var api            = require('./controllers/api')
 var direct         = require('./controllers/direct')
 
 var functionsHelper = require('./helper/functions')
 
 var DB              = require('./models/db')
+var User            = require('./models/user')
 var config          = require('./config')
 var pkg             = require('./package.json')
 
@@ -141,13 +142,12 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-passport.use(new LocalStrategy({
+passport.use('local', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password'
   },
   function(email, password, done) {
     User.findByQueries({'email': email}, function(err, user) {
-      console.log(err, user);
       if (err) { return done(err); }
 
       if (!user) {
@@ -166,7 +166,7 @@ passport.use(new LocalStrategy({
   }
 ));
 
-// app.use('/dashboard', dashboard)
+app.use('/dashboard', dashboard)
 app.use('/api', api)
 app.use('/direct', direct)
 app.use('/', index)
